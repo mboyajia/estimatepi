@@ -2,7 +2,6 @@ package com.eversmann.examples.estimatepi;
 
 import java.io.IOException;
 
-import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,9 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/EstimatePi")
 public class EstimatePiServlet extends HttpServlet {
 		
-	@Inject
-	EstimatePiService estimatePiService;
-
     @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	System.out.println("EstimatePiServlet.doGet");
@@ -26,13 +22,10 @@ public class EstimatePiServlet extends HttpServlet {
 		try {
 			numTrials = Integer.parseInt(request.getParameter("numTrials"));
 			maxNumber = Integer.parseInt(request.getParameter("maxNumber"));
-			result = estimatePiService.estimatePi(numTrials, maxNumber);
+			result = estimatePi(numTrials, maxNumber);
 			success = true;
 		}
-		catch (NumberFormatException e) {
-			success = false;
-		}
-		catch (NullPointerException e) {
+		catch (Exception e) {
 			success = false;
 		}
 		response.getWriter().append("<html><title>Estimate Pi</title><body><h2>Estimate Pi</h2><form>");
@@ -49,4 +42,21 @@ public class EstimatePiServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	private double estimatePi(int numTries, int maxNumber) {
+		int numFoundCoprimes = 0;
+		for (int i=0; i<numTries; i++) {
+			if (gcd (randomWithMax(maxNumber), randomWithMax(maxNumber))==1) {
+				numFoundCoprimes++;
+			}
+		}
+		return Math.sqrt(6.0 * (double)numTries / (double)numFoundCoprimes);
+	}
+	
+	private static int gcd(int a, int b) {
+		return (b==0 ? a : gcd (b, a%b));
+	}
+	
+	private static int randomWithMax(int maxNumber) {
+		return (int)(Math.random()*maxNumber);
+	}
 }

@@ -55,8 +55,6 @@
 
         <!-- JBoss dependency versions -->
 
-        <version.wildfly.maven.plugin>1.0.2.Final</version.wildfly.maven.plugin>
-
         <version.jboss.spec.javaee.7.0>1.0.3.Final-redhat-2</version.jboss.spec.javaee.7.0>
 
         <!-- other plug-in versions -->
@@ -88,13 +86,6 @@
 
     <dependencies>
 
-        <!-- Import the CDI API, we use provided scope as the API is included in JBoss EAP -->
-        <dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
         <!-- Import the Common Annotations API (JSR-250), we use provided scope
             as the API is included in JBoss EAP -->
         <dependency>
@@ -124,12 +115,6 @@
                     <!-- Java EE doesn't require web.xml, Maven needs to catch up! -->
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
-            </plugin>
-            <!-- WildFly plug-in to deploy the WAR -->
-            <plugin>
-                <groupId>org.wildfly.plugins</groupId>
-                <artifactId>wildfly-maven-plugin</artifactId>
-                <version>${version.wildfly.maven.plugin}</version>
             </plugin>
         </plugins>
     </build>

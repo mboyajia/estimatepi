@@ -32,6 +32,9 @@ public class EstimatePiServlet extends HttpServlet {
 		catch (NumberFormatException e) {
 			success = false;
 		}
+		catch (NullPointerException e) {
+			success = false;
+		}
 		response.getWriter().append("<html><title>Estimate Pi</title><body><h2>Estimate Pi</h2><form>");
 		response.getWriter().append("Number of Trials:<input name='numTrials' value='"+(success?numTrials:"")+"' /><br />");
 		response.getWriter().append("Max Random Number:<input name='maxNumber' value='"+(success?maxNumber:"")+"' /><br />");

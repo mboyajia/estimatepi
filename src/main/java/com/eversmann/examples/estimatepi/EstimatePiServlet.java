@@ -28,8 +28,18 @@ public class EstimatePiServlet extends HttpServlet {
 		catch (Exception e) {
 			success = false;
 		}
-
-		response.getWriter().append("<html><title>Estimate Pi</title><body><h2>Estimate Pi</h2><form><br />");
+		
+		/* Colors
+		White: #FFFFFF
+		Light Green: #D2FFB5
+		Light Blue: #B5FDFF
+		Light Pink: F0CCFF
+		*/
+		
+		String hexColor = "#D2FFB5";
+		response.getWriter().append("<html><head><style>body { background-color: " + hexColor + " }</style></head>");
+		response.getWriter().append("<title>Estimate Pi</title><body><h2>Estimate Pi</h2><form><br />");
+		//response.getWriter().append("<html><title>Estimate Pi</title><body><h2>Estimate Pi</h2><form><br />");
 		response.getWriter().append("<h3>Hello demo!!!<h3><br />");
 		response.getWriter().append("<br />Number of Trials:<input name='numTrials' value='"+(success?numTrials:"")+"' /><br />");
 		response.getWriter().append("Max Random Number:<input name='maxNumber' value='"+(success?maxNumber:"")+"' /><br />");

@@ -33,7 +33,7 @@ public class EstimatePiServlet extends HttpServlet {
 		White: #FFFFFF
 		Light Green: #D2FFB5
 		Light Blue: #B5FDFF
-		Light Pink: F0CCFF
+		Light Pink: #F0CCFF
 		*/
 		
 		String hexColor = "#D2FFB5";
@@ -46,7 +46,12 @@ public class EstimatePiServlet extends HttpServlet {
 		
 		response.getWriter().append("<input type='submit' /><br />");
 		response.getWriter().append("Pi Estimate: " + (success?result:"") + "<br />");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		//try these request methods
+		//getRequestURI, getRequestURL, getServletPath, getPathInfo, getPathTranslated
+		String url = request.getRequestURI();
+		response.getWriter().append("Served at: ").append(url);
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
     @Override

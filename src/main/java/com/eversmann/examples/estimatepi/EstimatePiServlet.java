@@ -38,7 +38,7 @@ public class EstimatePiServlet extends HttpServlet {
 		
 		String hexColor = "#B5FDFF";
 		response.getWriter().append("<html><head><style>body { background-color: " + hexColor + " }</style></head>");
-		response.getWriter().append("<title>Estimate Pi</title><body><h2>Estimate Pi</h2><form><br />");
+		response.getWriter().append("<title>Estimate Pi</title><body><h2>Estimate Pi - " + hexColor + "</h2><form><br />");
 		//response.getWriter().append("<html><title>Estimate Pi</title><body><h2>Estimate Pi</h2><form><br />");
 		response.getWriter().append("<h3>Hello demo!!!<h3><br />");
 		response.getWriter().append("<br />Number of Trials:<input name='numTrials' value='"+(success?numTrials:"")+"' /><br />");
@@ -48,8 +48,11 @@ public class EstimatePiServlet extends HttpServlet {
 		response.getWriter().append("Pi Estimate: " + (success?result:"") + "<br />");
 		
 		//try these request methods
-		//getRequestURI, getRequestURL, getServletPath, getPathInfo, getPathTranslated
-		String url = request.getRequestURI();
+		//getRequestURI = /EstimatePi
+		//getServletPath = ?
+		//getPathInfo = ?
+		//getPathTranslated = ?
+		String url = request.getServletPath();
 		response.getWriter().append("Served at: ").append(url);
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}

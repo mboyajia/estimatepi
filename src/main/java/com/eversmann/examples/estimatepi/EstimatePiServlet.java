@@ -36,7 +36,7 @@ public class EstimatePiServlet extends HttpServlet {
 		Light Pink: #F0CCFF
 		*/
 		
-		String hexColor = "#B5FDFF";
+		String hexColor = "#D2FFB5";
 		response.getWriter().append("<html><head><style>body { background-color: " + hexColor + " }</style></head>");
 		response.getWriter().append("<title>Estimate Pi</title><body><h2>Estimate Pi - " + hexColor + "</h2><form><br />");
 		//response.getWriter().append("<html><title>Estimate Pi</title><body><h2>Estimate Pi</h2><form><br />");

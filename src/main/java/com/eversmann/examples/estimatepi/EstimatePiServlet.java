@@ -34,6 +34,7 @@ public class EstimatePiServlet extends HttpServlet {
 		Light Green: #D2FFB5
 		Light Blue: #B5FDFF
 		Light Pink: #F0CCFF
+		Light Yellow: #F2FCAE
 		*/
 		
 		String hexColor = "#D2FFB5";
